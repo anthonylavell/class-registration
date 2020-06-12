@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css}" />
+    <title>Register New Student</title>
+</head>
+<body>
+<!--<nav th:replace="layouts :: navbar"></nav>-->
+<div class="container">
+    <form action="/student/save" th:object="${student}" method="POST">
+
+        <input type="text" placeholder="First Name" th:field="*{firstName}">
+
+        <input type="text" placeholder="Last Name" th:field="*{lastName}">
+
+        <input type="number" placeholder="Age" th:field="*{age}">
+
+        <select th:field="*{Classification}">
+            <option th:value="Freshman"> Freshman</option>
+            <option th:value="Sophomore"> Sophomore</option>
+            <option th:value="Junior"> Junior</option>
+            <option th:value="Senior"> Senior</option>
+        </select>
+
+        <input type="text" placeholder="Student Email" th:field="*{email}">
+
+        <button type="submit">Register Student</button>
+
+    </form>
+</div>
+
+</body>
+</html>
