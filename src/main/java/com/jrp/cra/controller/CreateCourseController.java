@@ -20,7 +20,7 @@ public class CreateCourseController {
     public String displayForm(Model model){
         Course aCourse = new Course();
         model.addAttribute("course",aCourse);
-        return "new-course";
+        return "course/new-course";
     }
 
     @PostMapping("/save")
