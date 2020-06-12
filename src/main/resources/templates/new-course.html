@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css"
+           th:href="@{/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css}" />
+    <title>Create New Course</title>
+</head>
+<body>
+<!--<nav th:replace="layouts :: navbar"></nav>-->
+<div class="container">
+    <form action="/course/save" th:object="${course}" method="POST">
+
+        <input type="text" placeholder="Course Name" th:field="*{courseName}">
+
+        <input type="text" placeholder="Course Credit" th:field="*{courseCredit}">
+
+        <select th:field="${course.stage}">
+            <option th:value="Empty"> Empty</option>
+            <option th:value="Almost-Full"> Almost Full</option>
+            <option th:value="Full"> Full</option>
+        </select>
+
+        <textarea type="text" placeholder="Enter course Description"
+                  th:field="${course.description}"></textarea>
+
+        <button type="submit">Create Course</button>
+
+    </form>
+</div>
+
+</body>
+</html>
