@@ -20,8 +20,8 @@
     <table>
         <thead>
             <tr>
-                <th>Course Name</th>
-                <th>Course Size</th>
+                <th>Name</th>
+                <th>Size</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +29,25 @@
                 <td th:text="${aCourse.courseName}" />
                 <td th:text="${aCourse.stage}" />
             </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h4>Current Student</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Classification</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.firstName}" />
+            <td th:text="${student.lastName}" />
+            <td th:text="${student.classification}" />
+        </tr>
         </tbody>
     </table>
 </div>

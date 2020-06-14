@@ -15,7 +15,7 @@ public class Student {
     private String lastName;
     private int age;
     private String email;
-    private String Classification; //Freshman, Sophomore, Junior and Senior
+    private String classification; //Freshman, Sophomore, Junior and Senior
 
     public Student(){
 
@@ -26,7 +26,7 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        Classification = classification;
+        this.classification = classification;
     }
 
     public long getStudentId() {
@@ -70,10 +70,10 @@ public class Student {
     }
 
     public String getClassification() {
-        return Classification;
+        return classification;
     }
 
     public void setClassification(String classification) {
-        Classification = classification;
+        this.classification = classification;
     }
 }

@@ -1,7 +1,9 @@
 package com.jrp.cra.controller;
 
 import com.jrp.cra.dao.ICourseRepository;
+import com.jrp.cra.dao.IStudentRepository;
 import com.jrp.cra.entites.Course;
+import com.jrp.cra.entites.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +16,17 @@ public class HomeController {
 
     @Autowired
     ICourseRepository courseRepo;
+    @Autowired
+    IStudentRepository studentRepo;
 
     @GetMapping("/")
     public String displayHome(Model model){
-        List<Course> courses = courseRepo.findAll();
-        model.addAttribute("courses",courses);
+        List<Course> listOfCourses = courseRepo.findAll();
+        model.addAttribute("courses",listOfCourses);
+
+        List<Student> listOfStudents = studentRepo.findAll();
+        model.addAttribute("students",listOfStudents);
+
         return "main/home";
     }
 }
