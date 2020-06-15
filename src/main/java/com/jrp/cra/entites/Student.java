@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Student {
@@ -11,10 +14,20 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long studentId;
 
+    @NotBlank(message="*Must give a first name")
+    @Size(min = 1, max = 50)
     private String firstName;
+
+    @NotBlank(message="*Must give a last name")
+    @Size(min = 2, max = 50)
     private String lastName;
     private int age;
+
+    @NotBlank
+    @Email(message="*Must be a valid email address")
     private String email;
+
+    @NotBlank(message="*Must give a classification")
     private String classification; //Freshman, Sophomore, Junior and Senior
 
     public Student(){

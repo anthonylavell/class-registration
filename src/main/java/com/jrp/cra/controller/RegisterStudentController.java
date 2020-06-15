@@ -35,7 +35,7 @@ public class RegisterStudentController {
     @PostMapping("/save")
     public String registerStudent( Student student ,Model model){
         studentRepo.save(student);
-        return "redirect:/student/register";
+        return "redirect:/student";
 
     }
 

@@ -36,6 +36,6 @@ public class CreateCourseController {
     public String createCourse(Course course, Model model){
         courseRep.save(course);
         // use a redirect to prevent duplicate submissions
-        return "redirect:/course/new";
+        return "redirect:/course";
     }
 }
