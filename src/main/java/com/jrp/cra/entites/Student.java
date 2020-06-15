@@ -9,7 +9,9 @@ import java.util.List;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "get_student_seq", sequenceName = "student_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "get_student_seq")
     private long studentId;
 
     @NotBlank(message="*Must give a first name")
@@ -19,6 +21,7 @@ public class Student {
     @NotBlank(message="*Must give a last name")
     @Size(min = 2, max = 50)
     private String lastName;
+
     private int age;
 
     @NotBlank

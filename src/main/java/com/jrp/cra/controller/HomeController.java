@@ -14,6 +14,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+
+
     @Autowired
     ICourseRepository courseRepo;
     @Autowired
@@ -21,6 +23,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String displayHome(Model model){
+
+
         List<Course> listOfCourses = courseRepo.findAll();
         model.addAttribute("courses",listOfCourses);
 

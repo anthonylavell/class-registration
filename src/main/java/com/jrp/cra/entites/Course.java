@@ -1,12 +1,15 @@
 package com.jrp.cra.entites;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "get_course_seq", sequenceName = "course_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "get_course_seq")
     private long courseId;
 
     private long courseCredit;
@@ -78,5 +81,12 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void addStudent(Student student){
+        if(students==null){
+            students = new ArrayList<>();
+        }
+        students.add(student);
     }
 }
