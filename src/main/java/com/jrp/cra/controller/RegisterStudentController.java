@@ -9,12 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/student")
 public class RegisterStudentController {
 
     @Autowired
     IStudentRepository studentRepo;
+
+    @GetMapping
+    public String displayStudents(Model model){
+        List<Student> listOfStudents = studentRepo.findAll();
+        model.addAttribute("students",listOfStudents);
+        return "student/list-students";
+    }
 
     @GetMapping("/register")
     public String displayForm(Model model){
