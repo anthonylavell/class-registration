@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header"></head>
+<title>Course Directory</title>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<div class="container">
+    <h3> Course Directory</h3>
+
+    <!-- Add New Project Button -->
+    <a th:href="@{/course/new}" class="btn btn-primary btn-sm mb-3"> New Course</a>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Course Name</th>
+            <th>Course Stage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aCourse : ${courses}">
+            <td th:text="${aCourse.name}"></td>
+            <td th:text="${aCourse.stage}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
