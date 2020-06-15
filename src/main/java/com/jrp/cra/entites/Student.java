@@ -1,9 +1,6 @@
 package com.jrp.cra.entites;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -29,6 +26,10 @@ public class Student {
 
     @NotBlank(message="*Must give a classification")
     private String classification; //Freshman, Sophomore, Junior and Senior
+
+    @ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
 
     public Student(){
 

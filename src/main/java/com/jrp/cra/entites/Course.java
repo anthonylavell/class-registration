@@ -1,9 +1,7 @@
 package com.jrp.cra.entites;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -15,6 +13,9 @@ public class Course {
     private String courseName;
     private String stage; // EMPTY, FULL, ALMOST FULL
     private String description;
+
+    @OneToMany(mappedBy = "course")
+    private List<Student> students;
 
     public Course(){
 
