@@ -20,6 +20,12 @@
         <textarea type="text" placeholder="Enter course Description"
                   th:field="${course.description}"></textarea>
 
+        <select th:field="*{students}" multiple="multiple">
+            <option th:each = "student : ${allStudents}"
+                    th:value = "${student.studentId}"
+                    th:text = "${student.firstName}" />
+        </select>
+
         <button type="submit">Create Course</button>
 
     </form>

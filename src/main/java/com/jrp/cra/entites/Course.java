@@ -14,7 +14,10 @@ public class Course {
     private String stage; // EMPTY, FULL, ALMOST FULL
     private String description;
 
-    @OneToMany(mappedBy = "course")
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.REFRESH, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(name="course_student", joinColumns = @JoinColumn(name = "course_id"),
+    inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
 
     public Course(){
@@ -27,6 +30,14 @@ public class Course {
         this.courseName = courseName;
         this.stage = stage;
         this.description = description;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public long getRegistrationId() {

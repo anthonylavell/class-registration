@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -27,9 +28,11 @@ public class Student {
     @NotBlank(message="*Must give a classification")
     private String classification; //Freshman, Sophomore, Junior and Senior
 
-    @ManyToOne
-    @JoinColumn(name="course_id")
-    private Course course;
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.REFRESH, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(name="course_student", joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> courses;
 
     public Student(){
 
@@ -41,6 +44,14 @@ public class Student {
         this.lastName = lastName;
         this.email = email;
         this.classification = classification;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public long getStudentId() {
