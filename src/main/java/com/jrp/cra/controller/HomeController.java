@@ -2,8 +2,8 @@ package com.jrp.cra.controller;
 
 import com.jrp.cra.dao.ICourseRepository;
 import com.jrp.cra.dao.IStudentRepository;
+import com.jrp.cra.dto.IStudentCourse;
 import com.jrp.cra.entites.Course;
-import com.jrp.cra.entites.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,8 +30,8 @@ public class HomeController {
         List<Course> listOfCourses = courseRepo.findAll();
         model.addAttribute("courses",listOfCourses);
 
-        List<Student> listOfStudents = studentRepo.findAll();
-        model.addAttribute("students",listOfStudents);
+        List<IStudentCourse> studentsCourseCnt = studentRepo.studentCourses();
+        model.addAttribute("studentsCourseCnt",studentsCourseCnt);
 
         return "main/home";
     }
