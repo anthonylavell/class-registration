@@ -4,43 +4,57 @@
 <title>Register Result</title>
 <body>
 <nav th:replace="layouts :: navbar"></nav>
-<div class="container">
-    <h4>Main Dashboards</h4>
-    <a th:text="${versionNumber}"></a>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Size</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="aCourse : ${courses}">
-                <td th:text="${aCourse.courseName}" />
-                <td th:text="${aCourse.stage}" />
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <h4>Current Student</h4>
-    <table>
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Classification</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="student : ${students}">
-            <td th:text="${student.firstName}" />
-            <td th:text="${student.lastName}" />
-            <td th:text="${student.classification}" />
-        </tr>
-        </tbody>
-    </table>
-</div>
 
+<div class="container">
+    <h3>Main Dashboards</h3>
+<a th:text="${versionNumber}"></a>
+<hr>
+    <h4>Current Courses</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Course Capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="aCourse : ${courses}">
+                        <td th:text="${aCourse.courseName}" />
+                        <td th:text="${aCourse.stage}" />
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <canvas id="myPieChart" height="50" width="50"></canvas>
+        
+        </div>
+    </div>
+
+    <h4>Current Student</h4>
+    <div class="row">
+        <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Classification</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.firstName}" />
+                <td th:text="${student.lastName}" />
+                <td th:text="${student.classification}" />
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/myChart.js}"></script>
 </body>
 </html>
