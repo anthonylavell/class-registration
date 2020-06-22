@@ -1,7 +1,7 @@
 package com.jrp.cra.controller;
 
-import com.jrp.cra.dao.IStudentRepository;
 import com.jrp.cra.entites.Student;
+import com.jrp.cra.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,11 @@ import java.util.List;
 public class RegisterStudentController {
 
     @Autowired
-    IStudentRepository studentRepo;
+    StudentService studentRepo;
 
     @GetMapping
     public String displayStudents(Model model){
-        List<Student> listOfStudents = studentRepo.findAll();
+        List<Student> listOfStudents = studentRepo.getAll();
         model.addAttribute("students",listOfStudents);
         return "student/list-students";
     }

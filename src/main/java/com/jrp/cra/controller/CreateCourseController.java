@@ -1,9 +1,9 @@
 package com.jrp.cra.controller;
 
-import com.jrp.cra.dao.ICourseRepository;
-import com.jrp.cra.dao.IStudentRepository;
 import com.jrp.cra.entites.Course;
 import com.jrp.cra.entites.Student;
+import com.jrp.cra.services.CourseService;
+import com.jrp.cra.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +18,14 @@ import java.util.List;
 public class CreateCourseController {
 
     @Autowired
-    ICourseRepository courseRep;
+    CourseService courseRep;
 
     @Autowired
-    IStudentRepository studentRep;
+    StudentService studentRep;
 
     @GetMapping
     public String displayStudents(Model model){
-        List<Course> listOfCourse = courseRep.findAll();
+        List<Course> listOfCourse = courseRep.getAll();
         model.addAttribute("courses",listOfCourse);
         return "course/list-courses";
     }
@@ -35,7 +35,7 @@ public class CreateCourseController {
         Course aCourse = new Course();
         model.addAttribute("course",aCourse);
 
-        List<Student>listOfStudents = studentRep.findAll();
+        List<Student>listOfStudents = studentRep.getAll();
         model.addAttribute("allStudents", listOfStudents);
         return "course/new-course";
     }
