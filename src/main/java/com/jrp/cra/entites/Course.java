@@ -27,7 +27,7 @@ public class Course {
 
     }
 
-    public Course(long courseCredit, String courseName, String stage,
+    public Course(String courseName, long courseCredit, String stage,
                   String description) {
         this.courseCredit = courseCredit;
         this.courseName = courseName;
