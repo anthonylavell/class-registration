@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="layouts :: navbar"></nav>
 <div class="container">
-    <form action="/student/save" th:object="${student}" method="POST">
+    <form th:action="@{/student/save}" th:object="${student}" method="POST">
 
         <input type="text" placeholder="First Name" th:field="*{firstName}">
 

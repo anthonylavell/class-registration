@@ -25,7 +25,7 @@ public class RegisterStudentController {
         return "student/list-students";
     }
 
-    @GetMapping("/register")
+    @GetMapping("/registration")
     public String displayForm(Model model){
         Student aStudent = new Student();
         model.addAttribute("student",aStudent);
