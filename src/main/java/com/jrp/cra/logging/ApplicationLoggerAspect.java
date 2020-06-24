@@ -32,13 +32,14 @@ public class ApplicationLoggerAspect {
         Object o = null;
 
         try {
+            o = jp.proceed();
 
         } catch (Throwable e) {
             // TODD Auto-generated catch block
             e.printStackTrace();
         }
 
-        log.debug("***************** After Method Execution ************* \n {}.{} () " +
+       log.debug("***************** After Method Execution ************* \n {}.{} () " +
                         "with arguments [s] = {}", jp.getSignature().getDeclaringTypeName(),
                 jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
         log.debug("___________________ \n \n \n");
