@@ -22,6 +22,14 @@ public class StudentService {
         return studentRepo.findAll();
     }
 
+    public Student getStudentById( long id){
+        return studentRepo.findById(id).get();
+    }
+
+    public void deleteStudentById(long id){
+        studentRepo.deleteById(id);
+    }
+
     public List<IStudentCourse> studentCourses(){
         return studentRepo.studentCourses();
     }

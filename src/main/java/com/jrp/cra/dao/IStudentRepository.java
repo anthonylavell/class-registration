@@ -11,6 +11,7 @@ public interface IStudentRepository extends CrudRepository<Student,Long> {
     @Override
     public List<Student> findAll();
 
+
     @Query(nativeQuery = true, value = "SELECT s.first_name as firstName, s.last_name as lastName, COUNT(cs.student_id) as courseCount " +
             "FROM student s left join course_student cs ON cs.student_id = s.student_id " +
             "GROUP BY s.first_name, s.last_name " +
