@@ -7,6 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,20 +31,20 @@ public class StudentApiController {
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Student create(@RequestBody Student student){
+    public Student create(@RequestBody @Valid Student student){
        return studentService.save(student);
     }
 
     @PutMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public Student update(@RequestBody Student student){
+    public Student update(@RequestBody @Valid Student student){
         int n;
         return studentService.save(student);
     }
 
     @PatchMapping(path = "/{id}", consumes = "application/json")
     public Student partialUpdate(@PathVariable("id") long id,
-                                 @RequestBody Student patchStudent){
+                                 @RequestBody @Valid Student patchStudent){
 
         Student student  = studentService.getStudentById(id);
         if(patchStudent.getFirstName() != null){
