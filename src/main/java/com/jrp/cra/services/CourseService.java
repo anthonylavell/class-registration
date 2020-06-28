@@ -21,4 +21,12 @@ public class CourseService {
         return courseRepo.findAll();
     }
 
+    public Course getCourseById(long id){
+        return courseRepo.findById(id).get();
+    }
+
+    public void deleteCourseById(long id){
+        courseRepo.deleteById(id);
+    }
+
 }

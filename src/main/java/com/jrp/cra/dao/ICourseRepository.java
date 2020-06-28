@@ -12,6 +12,8 @@ public interface ICourseRepository extends CrudRepository<Course, Long> {
     @Override
     public List<Course> findAll();
 
+
+
     @Query(nativeQuery = true, value = "SELECT stage as label, COUNT(*) as value " +
             "FROM course " +
             "GROUP BY stage")

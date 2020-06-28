@@ -16,9 +16,6 @@ public class StudentApiController {
     @Autowired
     StudentService studentService;
 
-    /*@Autowired
-    IStudentRepository studentRepo;*/
-
     @GetMapping
     public List<Student> getStudents(){
         return studentService.getAll();
@@ -38,7 +35,6 @@ public class StudentApiController {
     @PutMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public Student update(@RequestBody @Valid Student student){
-        int n;
         return studentService.save(student);
     }
 
