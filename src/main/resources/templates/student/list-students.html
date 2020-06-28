@@ -25,6 +25,17 @@
             <td th:text="${aStudent.lastName}"></td>
             <td th:text="${aStudent.classification}"></td>
             <td th:text="${aStudent.email}"></td>
+            <td>
+                <a th:href="@{/student/update(id=${aStudent.studentId})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+                <a th:href="@{/student/delete(id=${aStudent.studentId})}"
+                    class="btn btn-danger btn-sm"
+                   onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+                    Delete
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

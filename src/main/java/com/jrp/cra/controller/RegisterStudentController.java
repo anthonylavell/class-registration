@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -37,6 +38,19 @@ public class RegisterStudentController {
         studentRepo.save(student);
         return "redirect:/student";
 
+    }
+
+    @GetMapping("/update")
+    public String displayStudentUpdateForm(@RequestParam("id") long theId, Model model){
+       Student student= studentRepo.getStudentById(theId);
+       model.addAttribute("student",student);
+        return "student/register-student";
+    }
+
+    @GetMapping("/delete")
+    public String displayStudentDeleteForm(@RequestParam("id") long theId){
+        studentRepo.deleteStudentById(theId);
+        return "redirect:/student";
     }
 
 }
