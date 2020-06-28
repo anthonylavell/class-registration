@@ -26,6 +26,10 @@ public class StudentService {
         return studentRepo.findById(id).get();
     }
 
+    public Student getStudentByEmail(String value){
+        return studentRepo.findByEmail(value);
+    }
+
     public void deleteStudentById(long id){
         studentRepo.deleteById(id);
     }

@@ -17,4 +17,6 @@ public interface IStudentRepository extends CrudRepository<Student,Long> {
             "GROUP BY s.first_name, s.last_name " +
             "ORDER BY 3 DESC")
     public List<IStudentCourse> studentCourses();
+
+    public Student findByEmail(String value);
 }
