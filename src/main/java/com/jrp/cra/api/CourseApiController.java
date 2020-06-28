@@ -1,4 +1,4 @@
-package com.jrp.cra.controller;
+package com.jrp.cra.api;
 
 import com.jrp.cra.entites.Course;
 import com.jrp.cra.services.CourseService;

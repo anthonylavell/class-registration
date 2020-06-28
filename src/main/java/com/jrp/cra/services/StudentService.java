@@ -4,6 +4,7 @@ import com.jrp.cra.dao.IStudentRepository;
 import com.jrp.cra.dto.IStudentCourse;
 import com.jrp.cra.entites.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public class StudentService {
 
     public List<Student> getAll(){
         return studentRepo.findAll();
+    }
+
+    public Iterable<Student> getAll(Pageable pageable){
+        return studentRepo.findAll(pageable);
     }
 
     public Student getStudentById( long id){
