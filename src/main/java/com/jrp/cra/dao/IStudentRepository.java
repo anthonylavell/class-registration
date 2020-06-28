@@ -4,9 +4,11 @@ import com.jrp.cra.dto.IStudentCourse;
 import com.jrp.cra.entites.Student;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
+@RepositoryRestResource(collectionResourceRel = "apistudents",path = "apistudents")
 public interface IStudentRepository extends PagingAndSortingRepository<Student,Long> {
     @Override
     public List<Student> findAll();
