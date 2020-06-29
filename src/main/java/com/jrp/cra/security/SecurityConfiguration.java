@@ -49,12 +49,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected  void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+       /* http.authorizeRequests()
                 .antMatchers("/course/new").hasAuthority("ADMIN")
                 .antMatchers("/course/save").hasAuthority("ADMIN")
                 .antMatchers("/","/**").permitAll()
                 .and()
-                .formLogin();
+                .formLogin();*/
         http.csrf().disable();
     }
 }

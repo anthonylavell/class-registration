@@ -46,11 +46,11 @@ public class Course {
         this.students = students;
     }
 
-    public long getRegistrationId() {
+    public long getCourseId() {
         return courseId;
     }
 
-    public void setRegistrationId(long courseId) {
+    public void setCourseId(long courseId) {
         this.courseId = courseId;
     }
 
