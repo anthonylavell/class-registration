@@ -10,28 +10,45 @@
             <input type="hidden" th:field="${student.studentId}" />
         </div>
         <div class="form-group row">
-            <input type="text" placeholder="First Name" th:field="*{firstName}">
+            <input type="text" placeholder="First Name"  th:field="*{firstName}">
+            <span th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="*{firstName}">
+            </span>
+
         </div>
 
         <div class="form-group row">
             <input type="text" placeholder="Last Name" th:field="*{lastName}">
+            <span th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="*{lastName}">
+            </span>
         </div>
 
         <div class="form-group row">
             <input type="number" placeholder="Age" th:field="*{age}">
+            <span th:if="${#fields.hasErrors('age')}"
+                  th:errors="*{age}">
+            </span>
         </div>
 
         <div class="form-group row">
             <select th:field="*{classification}">
+                <option th:value> Please Select</option>
                 <option th:value="Freshman"> Freshman</option>
                 <option th:value="Sophomore"> Sophomore</option>
                 <option th:value="Junior"> Junior</option>
                 <option th:value="Senior"> Senior</option>
             </select>
+            <span th:if="${#fields.hasErrors('classification')}"
+                  th:errors="*{classification}">
+            </span>
         </div>
 
         <div class="form-group row">
             <input type="text" placeholder="Student Email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}">
+            </span>
         </div>
 
         <div class="form-group row">

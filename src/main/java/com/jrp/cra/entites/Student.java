@@ -1,9 +1,11 @@
 package com.jrp.cra.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jrp.cra.validators.IUniqueValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -24,10 +26,12 @@ public class Student {
     @Size(min = 2, max = 50)
     private String lastName;
 
+    @Min(value = 12, message = "Age must be at least 12 and older")
     private int age;
 
-    @NotBlank
+    @NotBlank(message="*Must give an email")
     @Email(message="*Must be a valid email address")
+    @IUniqueValue
     private String email;
 
     @NotBlank(message="*Must give a classification")
