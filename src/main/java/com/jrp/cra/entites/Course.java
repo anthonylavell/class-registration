@@ -3,6 +3,9 @@ package com.jrp.cra.entites;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +17,17 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "get_course_seq")
     private long courseId;
 
+    @Max(value = 12, message = "*Course Credit can not greater than 20")
+    @Min(value = 1, message = "*Course Credit can not less than 1")
     private long courseCredit;
+
+    @NotBlank(message="*Must give a last name")
     private String courseName;
+
+    @NotBlank(message="*Must give a last name")
     private String stage; // EMPTY, FULL, ALMOST FULL
+
+    @NotBlank(message="*Must give a last name")
     private String description;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,

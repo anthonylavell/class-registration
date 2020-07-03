@@ -36,7 +36,7 @@ public class RegisterStudentController {
     }
 
     @PostMapping("/save")
-    public String registerStudent(Model model, @Valid Student student, Errors errors){
+    public String registerStudent(@Valid Student student, Errors errors){
         if(errors.hasErrors() ){
             return "student/register-student";
         }

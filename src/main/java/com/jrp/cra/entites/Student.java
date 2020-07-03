@@ -26,7 +26,7 @@ public class Student {
     @Size(min = 2, max = 50)
     private String lastName;
 
-    @Min(value = 12, message = "Age must be at least 12 and older")
+    @Min(value = 12, message = "*Age must be at least 12 and older")
     private int age;
 
     @NotBlank(message="*Must give an email")
